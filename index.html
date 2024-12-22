@@ -1,0 +1,102 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coming Soon - Our Exciting New Website</title>
+        <style>
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .video-background {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+            }
+
+            .content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.5);
+                /* Semi-transparent overlay */
+                color: white;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 4em;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            p {
+                font-size: 1.5em;
+                margin-bottom: 30px;
+                max-width: 80%;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            }
+
+            #countdown {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    </head>
+
+    <body>
+        <video class="video-background" autoplay loop muted playsinline poster="/placeholder.svg?height=1080&width=1920">
+            <source src="Final - LogoAnimation4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="content">
+            <!-- <h1>SOMETHING IS COOKING</h1> -->
+            <!-- <p>We're working hard to bring you something amazing. Stay tuned!</p> -->
+            <!-- <div id="countdown">Launching in: <span id="timer"></span></div> -->
+        </div>
+
+        <script>
+            // Set the launch date (adjust as needed)
+            const launchDate = new Date("2024-06-01T00:00:00").getTime();
+
+            // Update the countdown every second
+            const timer = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").innerHTML = "LAUNCHED!";
+                }
+            }, 1000);
+        </script>
+    </body>
+
+    </html>
